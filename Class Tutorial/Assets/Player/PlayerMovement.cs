@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour 
 {
 	public float Speed;
+    public GameObject shot;
 
 	// Use this for initialization
 	void Start ()
@@ -25,5 +26,12 @@ public class PlayerMovement : MonoBehaviour
 		{
 			Cursor.lockState = CursorLockMode.None;
 		}
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GameObject newShot = Instantiate(shot, Camera.main.transform.position + Camera.main.transform.forward * 0.5f, Quaternion.Euler(transform.rotation.eulerAngles));
+            newShot.GetComponent<Rigidbody>().velocity = Camera.main.transform.forward * 10;
+ 
+        }
 	}
 }
