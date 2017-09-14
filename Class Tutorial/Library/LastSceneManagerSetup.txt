@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scripts/Start.unity
+- path: Assets/_Scripts/CharacterControllerComplete.unity
   isLoaded: 1
   isActive: 1
