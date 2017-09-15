@@ -54,6 +54,7 @@
      <Compile Include="Assets\Player\FPS Camera\camMouseLook.cs" />
      <Compile Include="Assets\Player\Jump.cs" />
      <Compile Include="Assets\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\projectile\shot.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Users/Andrew Spaziani/Desktop/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
