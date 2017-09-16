@@ -2,22 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shot : MonoBehaviour {
-
-    float timer = 0;
-
+public class shot : MonoBehaviour 
+{
+	public float waitTime;
+	public float radius;
+	public float explosionForce;
 	// Use this for initialization
-	void Start () { 
-
+	void Start () 
+	{
+		StartCoroutine (Blast ());
     }
 	
-	// Update is called once per frame
-	void Update () {
-
-        timer += Time.deltaTime;
-
-        if (timer > 5)
-            Destroy(this.gameObject);
-
+	IEnumerator Blast()
+	{
+		yield return new WaitForSeconds (waitTime);
+		Collider[] objects = Physics.OverlapSphere (this.transform.position, radius);
+		foreach (Collider gameobj in objects) 
+		{
+			if (gameobj.gameObject.GetComponent<Rigidbody>() != null) 
+			{
+				gameobj.gameObject.GetComponent<Rigidbody> ().AddExplosionForce (explosionForce, this.transform.position, radius);
+			}	
+		}
+		Destroy (this.gameObject);
 	}
 }

@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             GameObject newShot = Instantiate(shot, Camera.main.transform.position + Camera.main.transform.forward * 0.5f, Quaternion.Euler(transform.rotation.eulerAngles));
-            newShot.GetComponent<Rigidbody>().velocity = Camera.main.transform.forward * 10;
+            newShot.GetComponent<Rigidbody>().velocity = Camera.main.transform.forward * 12;
  
         }
 	}
