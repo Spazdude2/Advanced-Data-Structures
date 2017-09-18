@@ -19,7 +19,7 @@ public class shot : MonoBehaviour
 		Collider[] objects = Physics.OverlapSphere (this.transform.position, radius);
 		foreach (Collider gameobj in objects) 
 		{
-			if (gameobj.gameObject.GetComponent<Rigidbody>() != null) 
+			if (gameobj.gameObject.GetComponent<Rigidbody>() != null && this.transform.GetComponent<SphereCollider>()) 
 			{
 				gameobj.gameObject.GetComponent<Rigidbody> ().AddExplosionForce (explosionForce, this.transform.position, radius);
 			}	
