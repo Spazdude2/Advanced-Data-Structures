@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
 	public float Speed;
     public GameObject shot;
+	public Transform GunEnd;
+	public float BulletSpeed;
 
 	// Use this for initialization
 	void Start ()
@@ -29,8 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject newShot = Instantiate(shot, Camera.main.transform.position + Camera.main.transform.forward * 0.5f, Quaternion.Euler(transform.rotation.eulerAngles));
-            newShot.GetComponent<Rigidbody>().velocity = Camera.main.transform.forward * 12;
+            GameObject newShot = Instantiate(shot, GunEnd.transform.position + GunEnd.transform.forward * 0.5f, Quaternion.Euler(transform.rotation.eulerAngles));
+            newShot.GetComponent<Rigidbody>().velocity = GunEnd.transform.forward * BulletSpeed;
  
         }
 	}
