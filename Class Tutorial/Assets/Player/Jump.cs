@@ -4,28 +4,36 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour 
 {
-	CharacterController Player;
-	public float jumpPower;
-	private Vector3 jump = Vector3.zero;
-	public float Gravity;
+	public float JumpPower;
+	public int jumps;
+	int SetJumps;
+
+	Rigidbody rb;
+
+	GameObject Player;
 	// Use this for initialization
 	void Start () 
 	{
-		Player = gameObject.GetComponent<CharacterController> ();
+		Player = this.transform.gameObject;
+		rb = this.GetComponent<Rigidbody> ();
+		SetJumps = jumps;
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Player.isGrounded) 
+		if (jumps > 0) 
 		{
 			if (Input.GetButtonDown ("Jump")) 
 			{
-				jump.y = jumpPower;
+				jumps--;
+				rb.GetComponent<Rigidbody> ().AddForce (0, JumpPower, 0);
 			}
 		}
+	}
 
-		jump.y -= Gravity * Time.deltaTime;
-		Player.Move (jump * Time.deltaTime);
+	void OnCollisionEnter (Collision collision)
+	{
+		jumps = SetJumps;
 	}
 }
